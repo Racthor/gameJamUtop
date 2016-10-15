@@ -3,6 +3,8 @@ using System.Collections;
 
 public class LevelChanger : MonoBehaviour {
 
+	public GameObject[] backgrounds;
+
 	// Use this for initialization
 	void Start () {
 	

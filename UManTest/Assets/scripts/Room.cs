@@ -20,12 +20,9 @@ public class Room : MonoBehaviour {
 
 		if (currentQuestion < questions.Length)
 			questions [currentQuestion].gameObject.SetActive (true);
-		else
+		else {
 			Debug.Log ("Next scene!");
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+			ScoreManager.changeScene ();
+		}
 	}
 }

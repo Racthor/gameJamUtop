@@ -4,10 +4,15 @@ using System.Collections;
 
 public class ChangeLevel : MonoBehaviour {
 
-	public GameObject[] backgrounds;
+	private int sceneIndex;
+
+	void Start () {
+		sceneIndex = 0;
+	}
 
 	// Use this for initialization
-	void Start () {
+	void changeScene () {
+		sceneIndex++;
 		Scene currentScene = SceneManager.GetActiveScene();
 		int next = currentScene.buildIndex + 1;				// index de la scène suivante
 		
@@ -40,5 +45,9 @@ public class ChangeLevel : MonoBehaviour {
 				// Paul de la compta ?! Mais que faites vous là ?
 			}
 		}
+	}
+
+	int getSceneIndex () {
+		return sceneIndex;
 	}
 }

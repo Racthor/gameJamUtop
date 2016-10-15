@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class Question : MonoBehaviour {
 
-	// The level this question belongs to
-	public int level;
-
 	// How much time the player is given to answer
 	public float timeout;
 
@@ -21,13 +18,11 @@ public class Question : MonoBehaviour {
 	private bool answered;
 
 	public void answer (int scorePaul, int scoreUman) {
-		//ScoreManager.jaugePaul += scorePaul;
-		//ScoreManager.jaugeUman += scoreUman;
 
-		ScoreManager.jaugePerLevel_Paul [level] += scorePaul;
-		ScoreManager.jaugePerLevel_Uman [level] += scoreUman;
+		ScoreManager.increasePaul(scorePaul);
+		ScoreManager.increaseUman(scoreUman);
 
-		Debug.Log ("Answered question, scores: Paul:" + ScoreManager.jaugePerLevel_Paul [level] + ",U-man:" + ScoreManager.jaugePerLevel_Uman [level]);
+		Debug.Log ("Answered question, scores: Paul:" + ScoreManager.jaugePerLevel_Paul [ScoreManager.getSceneIndex()] + ",U-man:" + ScoreManager.jaugePerLevel_Uman [ScoreManager.getSceneIndex()]);
 		answered = true;
 		room.nextQuestion ();
 	}

@@ -10,9 +10,7 @@ public class Room : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		questions = GetComponentsInChildren<Question> ();
-		foreach (Question q in questions)
-			q.gameObject.SetActive (false);
+		questions = GetComponentsInChildren<Question>(true);
 
 		questions [0].gameObject.SetActive (true);
 	}

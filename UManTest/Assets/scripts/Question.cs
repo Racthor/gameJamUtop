@@ -28,6 +28,7 @@ public class Question : MonoBehaviour {
 		ScoreManager.jaugePerLevel_Uman [level] += scoreUman;
 
 		Debug.Log ("Answered question, scores: Paul:" + ScoreManager.jaugePerLevel_Paul [level] + ",U-man:" + ScoreManager.jaugePerLevel_Uman [level]);
+		answered = true;
 		room.nextQuestion ();
 	}
 

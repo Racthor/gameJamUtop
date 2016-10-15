@@ -12,6 +12,8 @@ public class ScoreManager : MonoBehaviour
 
 	//Awake is called when the script instance is being loaded.
 	void Awake () {
+		DontDestroyOnLoad (this.gameObject);
+
 		jaugePerLevel_Paul = new int[3] {0,0,0};
 		jaugePerLevel_Uman = new int[3] {0,0,0};
 		

@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
 
-public class LevelChanger : MonoBehaviour {
+public class ChangeLevel : MonoBehaviour {
 
 	public GameObject[] backgrounds;
 

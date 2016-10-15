@@ -13,6 +13,9 @@ public class Answer : MonoBehaviour {
 
 	public int scorePaul;
 	public int scoreUman;
+	public string reactionText;
+	public AudioSource reactionClip;
+
 	public OnAnswerEvent answerEvent;
 
 	private Question question;
@@ -30,6 +33,14 @@ public class Answer : MonoBehaviour {
 	public void onclick() {
 //		Debug.Log ("clicked");
 		answerEvent.Invoke(scorePaul, scoreUman);
+
+		// Set reaction text
+		Text caption = question.GetComponentInChildren<Text> ();
+		caption.text = reactionText;
+
+		// Play reaction line
+
+
 		question.answer (scorePaul, scoreUman);
 	}
 		

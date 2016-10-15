@@ -14,11 +14,13 @@ public class ChangeLevel : MonoBehaviour {
 	void changeScene () {
 		sceneIndex++;
 		Scene currentScene = SceneManager.GetActiveScene();
-		int next = currentScene.buildIndex + 1;				// index de la scène suivante
+		int index = currentScene.buildIndex;				// index de la scène suivante
 		
-		if(next < 4){
+		if(index < 3){
 			if(ScoreManager.jaugePaul >= 3 || ScoreManager.jaugeUman >= 3){
-				SceneManager.LoadScene(next, LoadSceneMode.Single);
+				ScoreManager.jaugePerLevel_Paul[index] = ScoreManager.jaugePaul;
+				ScoreManager.jaugePerLevel_Uman[index] = ScoreManager.jaugeUman;
+				SceneManager.LoadScene(index + 1, LoadSceneMode.Single);
 			}
 			else {
 				// Mort horrible !

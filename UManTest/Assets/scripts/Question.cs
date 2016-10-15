@@ -14,6 +14,9 @@ public class Question : MonoBehaviour {
 	public int scoreTimeoutPaul;
 	public int scoreTimeoutUman;
 
+	// The room where this question is asked
+	private Room room;
+
 	private float timeoutTimestamp;
 	private bool answered;
 
@@ -22,16 +25,15 @@ public class Question : MonoBehaviour {
 		//ScoreManager.jaugeUman += scoreUman;
 
 		ScoreManager.jaugePerLevel_Paul [level] += scorePaul;
-		ScoreManager.jaugePerLevel_Paul [level] += scoreUman;
+		ScoreManager.jaugePerLevel_Uman [level] += scoreUman;
 
 		Debug.Log ("Answered question, scores: Paul:" + ScoreManager.jaugePerLevel_Paul [level] + ",U-man:" + ScoreManager.jaugePerLevel_Uman [level]);
-
-		// TODO go to next question
-		answered = true;
+		room.nextQuestion ();
 	}
 
 	// Use this for initialization
-	void Start () {
+	void OnEnable () {
+		room = GetComponentInParent<Room> ();
 		timeoutTimestamp = Time.time + timeout;
 		answered = false;
 	}

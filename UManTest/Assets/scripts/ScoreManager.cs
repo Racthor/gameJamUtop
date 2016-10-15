@@ -12,11 +12,11 @@ public class ScoreManager : MonoBehaviour
 
 	//Awake is called when the script instance is being loaded.
 	void Awake () {
-		jaugePerLevel_Paul = [0,0,0];
-		jaugePerLevel_Uman = [0,0,0];
+		jaugePerLevel_Paul = new int[3] {0,0,0};
+		jaugePerLevel_Uman = new int[3] {0,0,0};
 		
-		jaugePaul = 5;					//nombre de question max par scene
-		jaugeUman = 5;
+		jaugePaul = 0;					// Initialisation des jauges à 0
+		jaugeUman = 0;
 	}
 	
 	

@@ -12,6 +12,7 @@ public class ScoreManager : MonoBehaviour
 	public static int[] jaugePerLevel_Uman = {0, 0, 0};	// stocke les résultats de U-Man à la fin de chaque niveau
 
 	private static int sceneIndex;
+	private static int nextScene;
 
 	//Awake is called when the script instance is being loaded.
 	void Awake () {
@@ -36,19 +37,22 @@ public class ScoreManager : MonoBehaviour
 		jaugeUman += amount;
 	}
 
-	public static void changeScene () {
-		sceneIndex++;
+	public static void playOutro(Room currentRoom) {
 		Scene currentScene = SceneManager.GetActiveScene();
 		int next = currentScene.buildIndex + 1;				// index de la scène suivante
 
+		// More scenes left
 		if(next < 4){
 			if(ScoreManager.jaugePaul >= 3 || ScoreManager.jaugeUman >= 3){
-				SceneManager.LoadScene(next, LoadSceneMode.Single);
+				currentRoom.outro.SetActive (true);
+				nextScene = next;
 			}
 			else {
-				Debug.Log ("Mort horrible !");
+				currentRoom.failure.SetActive (true);
+				nextScene = 0; // To menu
 			}
 		}
+		// Last scene
 		else{
 			int scorePaul = 0, scoreUman = 0;
 			for(int i=0; i<3; ++i){
@@ -57,19 +61,30 @@ public class ScoreManager : MonoBehaviour
 			}
 			if(scoreUman < 10 && scorePaul < 10){
 				if(ScoreManager.jaugePaul >= 3 || ScoreManager.jaugeUman >= 3){
-					Debug.Log ("Vous êtes lobotomisé");
+					Debug.Log ("Fin mise à jour");
+					nextScene = next; // Credits
 				}
 				else{
 					Debug.Log ("Vous êtes détruit d'une horrible manière");
+					nextScene = 0;
 				}
 			}
 			else if(scoreUman >= 10){
-				Debug.Log ("Vous n'avez pas besoin de mise à jour félicitations, vous allez être remis en service");
+				Debug.Log ("Fin robot");
+				nextScene = next; // Credits
 			}
 			else if(scorePaul >= 10){
 				Debug.Log ("Paul de la compta ?! Mais que faites vous là ?");
+				nextScene = next; // Credits
 			}
 		}
+	}
+
+	public static void changeScene () {
+		sceneIndex = nextScene - 1;
+
+		if(nextScene < 4)
+			SceneManager.LoadScene(nextScene, LoadSceneMode.Single);
 	}
 
 	public static int getSceneIndex () {

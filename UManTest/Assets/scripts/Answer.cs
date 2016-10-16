@@ -18,6 +18,7 @@ public class Answer : MonoBehaviour {
 	public OnAnswerEvent answerEvent;
 
 	private Question question;
+	private Button button;
 
 	void Start() {
 //		Debug.Log ("coucou");
@@ -25,7 +26,7 @@ public class Answer : MonoBehaviour {
 			answerEvent = new OnAnswerEvent ();
 		
 		question = GetComponentInParent<Question>();
-		Button button = GetComponent<Button> ();
+		button = GetComponent<Button> ();
 		button.onClick.AddListener (onclick);
 	}
 
@@ -35,6 +36,7 @@ public class Answer : MonoBehaviour {
 
 		// TODO fadeout
 		question.room.voice.Stop();
+		button.gameObject.SetActive (false);
 
 		Invoke("answerQuestion", 1);
 	}

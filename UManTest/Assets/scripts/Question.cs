@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class Question : MonoBehaviour {
 
+	public AudioClip questionClip;
+
 	// How much time the player is given to answer
 	public float timeout;
 
@@ -53,6 +55,14 @@ public class Question : MonoBehaviour {
 		room = GetComponentInParent<Room> ();
 		timeoutTimestamp = Time.time + timeout;
 		answered = false;
+
+		room.voice.Stop ();
+		// Play question audio clip
+		if (questionClip != null) {
+			room.voice.clip = questionClip;
+			room.voice.Play ();
+			timeoutTimestamp += questionClip.length;
+		}
 	}
 	
 	// Update is called once per frame

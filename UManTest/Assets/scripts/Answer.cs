@@ -33,6 +33,9 @@ public class Answer : MonoBehaviour {
 //		Debug.Log ("clicked");
 		answerEvent.Invoke(scorePaul, scoreUman);
 
+		// TODO fadeout
+		question.room.voice.Stop();
+
 		Invoke("answerQuestion", 1);
 	}
 

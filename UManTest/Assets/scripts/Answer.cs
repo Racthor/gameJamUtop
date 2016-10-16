@@ -10,11 +10,10 @@ public class OnAnswerEvent : UnityEvent<int, int> {
 
 public class Answer : MonoBehaviour {
 
-
 	public int scorePaul;
 	public int scoreUman;
 	public string reactionText;
-	public AudioSource reactionClip;
+	public AudioClip reactionClip;
 
 	public OnAnswerEvent answerEvent;
 
@@ -34,14 +33,10 @@ public class Answer : MonoBehaviour {
 //		Debug.Log ("clicked");
 		answerEvent.Invoke(scorePaul, scoreUman);
 
-		// Set reaction text
-		Text caption = question.GetComponentInChildren<Text> ();
-		caption.text = reactionText;
-
-		// Play reaction line
-
-
-		question.answer (scorePaul, scoreUman);
+		Invoke("answerQuestion", 1);
 	}
-		
+
+	private void answerQuestion() {
+		question.answer (scorePaul, scoreUman, reactionText, reactionClip);
+	}
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class Question : MonoBehaviour {
 
@@ -17,6 +18,7 @@ public class Question : MonoBehaviour {
 	public string timeoutReactionText;
 	public AudioClip timeoutReactionClip;
 
+	public UnityEvent onTimeoutEvent;
 
 	// The room where this question is asked
 	public Room room { get; private set; }
@@ -36,7 +38,7 @@ public class Question : MonoBehaviour {
 		Text questionText = GetComponentInChildren<Text> ();
 		questionText.text = reactionText;
 
-		float nextQuestionDelay = 2.0f;
+		float nextQuestionDelay = 1.0f;
 		// Play reaction audio clip
 		if (reactionClip != null) {
 			room.voice.clip = reactionClip;
@@ -67,7 +69,9 @@ public class Question : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Time.time > timeoutTimestamp && !answered)
+		if (Time.time > timeoutTimestamp && !answered) {
+			onTimeoutEvent.Invoke ();
 			answer (scoreTimeoutPaul, scoreTimeoutUman, timeoutReactionText, timeoutReactionClip);
+		}
 	}
 }

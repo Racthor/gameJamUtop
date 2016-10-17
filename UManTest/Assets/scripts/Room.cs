@@ -27,7 +27,7 @@ public class Room : MonoBehaviour {
 		music = GameObject.Find ("MusicSource").GetComponent<AudioSource>();
 
 		questions = GetComponentsInChildren<Question>(true);
-		intro = GetComponentInChildren<RoomIntro>(true).gameObject;
+		intro = transform.FindChild ("Intro").gameObject;
 		outro = transform.FindChild ("Outro").gameObject;
 		failure = transform.FindChild ("Failure").gameObject;
 
@@ -41,7 +41,8 @@ public class Room : MonoBehaviour {
 			music.Play ();
 		}
 
-		intro.SetActive (true);
+		// Set this from the editor to control when the intro starts
+		//intro.SetActive (true);
 	}
 
 	public void nextQuestion() {

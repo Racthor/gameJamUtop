@@ -18,9 +18,13 @@ public class ScoreManager : MonoBehaviour
 	void Awake () {
 		DontDestroyOnLoad (this.gameObject);
 
-		jaugePerLevel_Paul = new int[3] {0,0,0};
-		jaugePerLevel_Uman = new int[3] {0,0,0};
-		
+		init ();
+	}
+
+	public void init() {
+		jaugePerLevel_Paul = new int[3] { 0, 0, 0 };
+		jaugePerLevel_Uman = new int[3] { 0, 0, 0 };
+
 		jaugePaul = 0;					// Initialisation des jauges à 0
 		jaugeUman = 0;
 
@@ -61,20 +65,23 @@ public class ScoreManager : MonoBehaviour
 			}
 			if(scoreUman < 10 && scorePaul < 10){
 				if(ScoreManager.jaugePaul >= 3 || ScoreManager.jaugeUman >= 3){
-					Debug.Log ("Fin mise à jour");
+					Debug.Log ("Fin MAJ");
+					currentRoom.transform.FindChild ("FinMAJ").gameObject.SetActive (true);
 					nextScene = next; // Credits
 				}
 				else{
-					Debug.Log ("Vous êtes détruit d'une horrible manière");
+					currentRoom.failure.SetActive (true);
 					nextScene = 0;
 				}
 			}
 			else if(scoreUman >= 10){
 				Debug.Log ("Fin robot");
+				currentRoom.transform.FindChild ("FinRobot").gameObject.SetActive (true);
 				nextScene = next; // Credits
 			}
 			else if(scorePaul >= 10){
 				Debug.Log ("Paul de la compta ?! Mais que faites vous là ?");
+				currentRoom.transform.FindChild ("FinPaul").gameObject.SetActive (true);
 				nextScene = next; // Credits
 			}
 		}
@@ -83,8 +90,7 @@ public class ScoreManager : MonoBehaviour
 	public static void changeScene () {
 		sceneIndex = nextScene - 1;
 
-		if(nextScene < 4)
-			SceneManager.LoadScene(nextScene, LoadSceneMode.Single);
+		SceneManager.LoadScene(nextScene, LoadSceneMode.Single);
 	}
 
 	public static int getSceneIndex () {

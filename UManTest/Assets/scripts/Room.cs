@@ -28,7 +28,9 @@ public class Room : MonoBehaviour {
 
 		questions = GetComponentsInChildren<Question>(true);
 		intro = transform.FindChild ("Intro").gameObject;
-		outro = transform.FindChild ("Outro").gameObject;
+		// Steve Jobs has no "standard" outro
+		if (ScoreManager.getSceneIndex() != 2)
+			outro = transform.FindChild ("Outro").gameObject;
 		failure = transform.FindChild ("Failure").gameObject;
 
 		if (ambient != null) {

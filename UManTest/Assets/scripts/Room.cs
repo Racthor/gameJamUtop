@@ -44,7 +44,7 @@ public class Room : MonoBehaviour {
 		}
 
 		// Set this from the editor to control when the intro starts
-		//intro.SetActive (true);
+		intro.SetActive (true);
 	}
 
 	public void nextQuestion() {

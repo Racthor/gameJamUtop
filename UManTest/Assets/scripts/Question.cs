@@ -6,6 +6,8 @@ using UnityEngine.Events;
 
 public class Question : MonoBehaviour {
 
+    public GameObject[] questionPictures;
+
 	public AudioClip questionClip;
 
 	// How much time the player is given to answer
@@ -54,11 +56,15 @@ public class Question : MonoBehaviour {
 
 	// Use this for initialization
 	void OnEnable () {
+        Debug.Log("EnableQuestion");
 		room = GetComponentInParent<Room> ();
 		timeoutTimestamp = Time.time + timeout;
 		answered = false;
 
 		room.voice.Stop ();
+
+        spawnQuestionPictures();
+
 		// Play question audio clip
 		if (questionClip != null) {
 			room.voice.clip = questionClip;
@@ -67,6 +73,20 @@ public class Question : MonoBehaviour {
 		}
 	}
 	
+    // Unfreeze the pictures in the Y axe (but still freeze them in rotation and in X axe)
+    void spawnQuestionPictures()
+    {
+        Debug.Log("spawnQuestionPictures");
+        foreach (GameObject questionPicture in questionPictures)
+        {
+            Debug.Log("foreachInSpawnQuestionPictures");
+            questionPicture.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
+            questionPicture.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX;
+            questionPicture.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
+        }
+        
+    }
+
 	// Update is called once per frame
 	void Update () {
 		if (Time.time > timeoutTimestamp && !answered) {

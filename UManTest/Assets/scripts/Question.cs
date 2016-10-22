@@ -11,7 +11,7 @@ public class Question : MonoBehaviour {
 	public AudioClip questionClip;
 
 	// How much time the player is given to answer
-	public float timeout;
+	public float timeout = 7.0f;
 
 	//Scores associated to the timeout
 	public int scoreTimeoutPaul;
@@ -47,6 +47,10 @@ public class Question : MonoBehaviour {
 			room.voice.Play ();
 			nextQuestionDelay += reactionClip.length;
 		}
+
+        // remove the answers pictures from the scene
+        destroyQuestionPictures();
+
 		Invoke("nextQuestion", nextQuestionDelay);
 	}
 
@@ -79,12 +83,21 @@ public class Question : MonoBehaviour {
         Debug.Log("spawnQuestionPictures");
         foreach (GameObject questionPicture in questionPictures)
         {
-            Debug.Log("foreachInSpawnQuestionPictures");
             questionPicture.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
             questionPicture.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX;
             questionPicture.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
         }
         
+    }
+
+    // Remove the Question pictures
+    void destroyQuestionPictures()
+    {
+        Debug.Log("remove question pictures");
+        foreach (GameObject questionPicture in questionPictures)
+        {
+            questionPicture.SetActive(false);
+        }
     }
 
 	// Update is called once per frame

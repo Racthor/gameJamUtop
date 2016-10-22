@@ -85,6 +85,8 @@ public class ScoreManager : MonoBehaviour
 				nextScene = next; // Credits
 			}
 		}
+
+        changeScene();
 	}
 
 	public static void changeScene () {

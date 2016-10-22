@@ -61,7 +61,10 @@ public class Question : MonoBehaviour {
 	// Use this for initialization
 	void OnEnable () {
         Debug.Log("EnableQuestion");
-		room = GetComponentInParent<Room> ();
+
+        initPictures();
+
+        room = GetComponentInParent<Room> ();
 		timeoutTimestamp = Time.time + timeout;
 		answered = false;
 
@@ -76,13 +79,25 @@ public class Question : MonoBehaviour {
 			timeoutTimestamp += questionClip.length;
 		}
 	}
-	
+
+    // Disable all the picture collider at the begining,
+    // it prevent them from staying out while spawning
+    void initPictures()
+    {
+        foreach (GameObject questionPicture in questionPictures)
+        {
+            questionPicture.GetComponent<BoxCollider2D>().enabled = false;
+        }
+    }
+
     // Unfreeze the pictures in the Y axe (but still freeze them in rotation and in X axe)
     void spawnQuestionPictures()
     {
         Debug.Log("spawnQuestionPictures");
         foreach (GameObject questionPicture in questionPictures)
         {
+            questionPicture.GetComponent<BoxCollider2D>().enabled = true;
+
             questionPicture.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
             questionPicture.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX;
             questionPicture.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;

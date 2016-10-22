@@ -7,20 +7,6 @@ public class QuestionTexts : MonoBehaviour {
 
     public int questionNumber;
 
-    string[] introScene1 = new string[] {
-        "Bien unité 404, je suis l'expert chargé de faire passer votre premier test de conformité apple. \nLe thème de ce test est intégrité physique",
-        "Le principe est simple. Je vous pose une question auquel deux choix de réponses vous sont soumis. \nAffin d'améliorer l'exactitude des résultats, chacune des questions sera chronométrée.",
-        "Commençons…"
-    };
-
-    string[] introScene2 = new string[] {
-        "Bonjour, je suis l'unité chargée de vous soumettre les tests de conformité morale. \nVeuillez bien croire que je ne prend aucun plaisir à observer votre  totale soumission à mes caprices. \nLes régles sont les même que précédemment, cependant à la fin des tests il y aura du gâteau, si vous survivez du moins."
-    };
-
-    string[] introScene3 = new string[] {
-        "Bonjour, je suis Steeve Jobs, bienvenue chez apple. Maintenant que j'ai toute vottre attention, sachez que ce test de conformité sera celui du libre arbitre. \nBien sûr en tant que apple user, vous êtes sensé en être dénués. Ah ah !"
-    };
-
     string[] questionsScene1 = new string[] {
         "Question 1 : Parmi ces deux objets, lequel vous effraie le plus ?",
         "Question 2 : Vous pouvez appuyer sur ce bouton pour passer directement à la prochaine question. \nAttention, celle-ci sera d'ordre très personnel.",

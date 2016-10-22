@@ -1,0 +1,25 @@
+fileFormatVersion: 2
+guid: b02fcb9bd999e1f4b81f00db61f22e1c
+timeCreated: 1476811446
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - ITC Lubalin Graph Std
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 09329640579bf9f4abaf82b828120d11, type: 3}
+  - {fileID: 12800000, guid: ab2c3b42373d5d34f8007275556718c4, type: 3}
+  - {fileID: 12800000, guid: 37326ba6d7a1949419aa6225ebe28d23, type: 3}
+  - {fileID: 12800000, guid: 55da5b975ee726d49bd4868154bf66a7, type: 3}
+  - {fileID: 12800000, guid: 139cbbe86034ca3429aa0488af139c5d, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

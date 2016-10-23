@@ -3,7 +3,12 @@ using System.Collections;
 
 public class ExaminerSpawnCollider : MonoBehaviour {
 
-    public GameObject desck;
+    private Collider2D deskCollider;
+
+    void Start()
+    {
+        deskCollider = GameObject.Find("Pictures").GetComponent<Pictures>().deskCollider;
+    }
 
     // When Examiner is colliding with "this", 
     // stop Examiner movements,
@@ -23,8 +28,8 @@ public class ExaminerSpawnCollider : MonoBehaviour {
             // disable the ExaminerSpawnCollider collider (it has only to trigger once)
             gameObject.GetComponent<BoxCollider2D>().enabled = false;
 
-            // enable desck collider
-            desck.GetComponent<Collider2D>().enabled = true;
+            // enable desk collider
+            deskCollider.enabled = true;
         }
     }
 }

@@ -20,7 +20,9 @@ public class Question : MonoBehaviour {
 	public string timeoutReactionText;
 	public AudioClip timeoutReactionClip;
 
-	public UnityEvent onTimeoutEvent;
+    public string examinerBehaviour;
+
+    public UnityEvent onTimeoutEvent;
 
 	// The room where this question is asked
 	public Room room { get; private set; }
@@ -28,9 +30,9 @@ public class Question : MonoBehaviour {
 	private float timeoutTimestamp;
 	private bool answered;
 
-	public void answer (int scorePaul, int scoreUman, string reactionText, AudioClip reactionClip) {
-
-		ScoreManager.increasePaul(scorePaul);
+	public void answer (int scorePaul, int scoreUman, string reactionText, AudioClip reactionClip, string examinerBehaviour)
+    {
+        ScoreManager.increasePaul(scorePaul);
 		ScoreManager.increaseUman(scoreUman);
 
 		Debug.Log ("Answered question, scores: Paul:" + ScoreManager.jaugePerLevel_Paul [ScoreManager.getSceneIndex()] + ",U-man:" + ScoreManager.jaugePerLevel_Uman [ScoreManager.getSceneIndex()]);
@@ -48,11 +50,20 @@ public class Question : MonoBehaviour {
 			nextQuestionDelay += reactionClip.length;
 		}
 
+        // Play animation for the examiner
+        this.examinerBehaviour = examinerBehaviour;
+        animateExaminer();
+
         // remove the answers pictures from the scene
         destroyQuestionPictures();
 
 		Invoke("nextQuestion", nextQuestionDelay);
 	}
+
+    private void animateExaminer()
+    {
+        room.examiner.GetComponent<ExaminerBehaviour>().playBehaviour(examinerBehaviour);
+    }
 
 	private void nextQuestion() {
 		room.nextQuestion ();
@@ -82,7 +93,7 @@ public class Question : MonoBehaviour {
 
     // Disable all the picture collider at the begining,
     // it prevent them from staying out while spawning
-    void initPictures()
+    private void initPictures()
     {
         foreach (GameObject questionPicture in questionPictures)
         {
@@ -91,7 +102,7 @@ public class Question : MonoBehaviour {
     }
 
     // Unfreeze the pictures in the Y axe (but still freeze them in rotation and in X axe)
-    void spawnQuestionPictures()
+    private void spawnQuestionPictures()
     {
         Debug.Log("spawnQuestionPictures");
         foreach (GameObject questionPicture in questionPictures)
@@ -119,7 +130,7 @@ public class Question : MonoBehaviour {
 	void Update () {
 		if (Time.time > timeoutTimestamp && !answered) {
 			onTimeoutEvent.Invoke ();
-			answer (scoreTimeoutPaul, scoreTimeoutUman, timeoutReactionText, timeoutReactionClip);
+			answer (scoreTimeoutPaul, scoreTimeoutUman, timeoutReactionText, timeoutReactionClip, examinerBehaviour);
 		}
 	}
 }

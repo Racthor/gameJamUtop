@@ -14,6 +14,7 @@ public class Answer : MonoBehaviour {
 	public int scoreUman;
 	public string reactionText;
 	public AudioClip reactionClip;
+    public string examinerBehaviour;
 
 	public OnAnswerEvent answerEvent;
 
@@ -40,6 +41,6 @@ public class Answer : MonoBehaviour {
 	}
 
 	private void answerQuestion() {
-		question.answer (scorePaul, scoreUman, reactionText, reactionClip);
+		question.answer (scorePaul, scoreUman, reactionText, reactionClip, examinerBehaviour);
 	}
 }

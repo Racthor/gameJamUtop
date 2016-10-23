@@ -20,6 +20,8 @@ public class Room : MonoBehaviour {
 	public AudioClip roomMusic;
 	public AudioClip ambient;
 
+    public GameObject examiner;
+
 	// Use this for initialization
 	void Start () {
 		voice = GameObject.Find ("VoiceSource").GetComponent<AudioSource>();

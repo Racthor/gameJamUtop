@@ -13,7 +13,7 @@ public class ExaminerBehaviour : MonoBehaviour {
         // setHappy();
     }
 
-    public void playBehaviour(string behaviour)
+    public void playBehaviour(string behaviour = "thinking")
     {
         
         if (behaviour != "happy" || behaviour != "sad" || behaviour != "thinking")

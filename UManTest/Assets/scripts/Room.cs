@@ -27,6 +27,7 @@ public class Room : MonoBehaviour {
 		voice = GameObject.Find ("VoiceSource").GetComponent<AudioSource>();
 		sounds = GameObject.Find ("AmbientSoundSource").GetComponent<AudioSource>();
 		music = GameObject.Find ("MusicSource").GetComponent<AudioSource>();
+        examiner = GameObject.Find("Examiner").gameObject;
 
 		questions = GetComponentsInChildren<Question>(true);
 		intro = transform.FindChild ("Intro").gameObject;

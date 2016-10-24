@@ -3,14 +3,14 @@ using System.Collections;
 
 public class Pictures : MonoBehaviour {
 
-    public Collider2D deskCollider;
+    public BoxCollider2D deskCollider;
     public GameObject examiner;
-    public Collider2D examinerSpawnCollider; // for ending the examiner spawn moovement.
+    public BoxCollider2D examinerSpawnCollider; // for ending the examiner spawn moovement.
 
 	// Use this for initialization
 	void Start () {
         examiner = GameObject.Find("Examiner");
-        deskCollider = GameObject.Find("Desk").GetComponent<Collider2D>();
-        examinerSpawnCollider = GameObject.Find("ExaminerSpawnCollider").GetComponent<Collider2D>();
+        deskCollider = GameObject.Find("Desk").GetComponent<BoxCollider2D>();
+        examinerSpawnCollider = GameObject.Find("ExaminerSpawnCollider").GetComponent<BoxCollider2D>();
 	}
 }

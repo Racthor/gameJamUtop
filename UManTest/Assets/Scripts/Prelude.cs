@@ -51,13 +51,13 @@ public class Prelude : MonoBehaviour {
         switch (SceneManager.GetActiveScene().name)
         {
             case "Scene1":
-                textReturned = "Bienvenue au centre de conformité apple uMan 404. Vous êtes convié à la procédure de vérification de votre bon fonctionnement. Cette intervention fait suite à la procédure 463f2 paliant au problème de disfonctionnement présent dans la gamme uMan. Un expert viendra dans quelques instants vous soumetre aux test de conformité numéro 1 : test d'integrité physique. Sachez qu'en cas d'échec à ce test, la loi 43293 prévoi la destruction totale de votre unité. Passez un bon test de conformité, bonne journée. \\n";
+                textReturned = "Bienvenue au centre de conformité apple uMan 404. Vous êtes convié à la procédure de vérification de votre bon fonctionnement. Cette intervention fait suite à la procédure 463f2 paliant au problème de disfonctionnement présent dans la gamme uMan. Un expert viendra dans quelques instants vous soumettre aux test de conformité numéro 1 : test d'integrité physique. Sachez qu'en cas d'échec à ce test, la loi 43293 prévoi la destruction totale de votre unité. Passez un bon test de conformité, bonne journée. \\n";
                 break;
             case "Scene2":
-                textReturned = "Bonjour, je suis l'unité chargée de vous soumettre les tests de conformité morale. \nVeuillez bien croire que je ne prend aucun plaisir à observer votre  totale soumission à mes caprices. Les régles sont les même que précédemment, cependant à la fin des tests il y aura du gâteau, si vous survivez du moins.";
+                textReturned = "Félicitation ! Vous avez passé le test d'integrité physique avec succes. Nous vous invitons à vous soumettre au prochain test de conformité. Bonne journée.";
                 break;
             case "Scene3":
-                textReturned = "Bonjour, je suis Steeve Jobs, bienvenue chez apple. Maintenant que j'ai toute votre attention, sachez que ce test de conformité sera celui du libre arbitre. Bien sûr en tant que apple user, vous êtes sensé en être dénué. Ah ah !";
+                textReturned = "Félicitation ! Vous avez passé le test d'integrité morale avec succes. Nous vous invitons à vous soumettre au prochain test de conformité. Bonne journée.";
                 break;
         }
 

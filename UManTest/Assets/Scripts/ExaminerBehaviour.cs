@@ -15,12 +15,7 @@ public class ExaminerBehaviour : MonoBehaviour {
 
     public void playBehaviour(string behaviour = "thinking")
     {
-        
-        if (behaviour != "happy" || behaviour != "sad" || behaviour != "thinking")
-        {
-            Debug.Log("unexpected string (" + behaviour + ") for examiner behaviour");
-        }
-        
+        Debug.Log("(" + behaviour + ") play for examiner behaviour");
 
         GetComponent<Animator>().SetTrigger(behaviour);
     }

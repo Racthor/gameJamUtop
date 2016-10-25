@@ -4,13 +4,11 @@ using System.Collections;
 public class ExaminerSpawnCollider : MonoBehaviour {
 
     private Collider2D deskCollider;
-    private GameObject examiner;
     private Pictures pictures;
 
     void Start()
     {
         pictures = GameObject.Find("Pictures").GetComponent<Pictures>();
-        examiner = pictures.examiner;
         deskCollider = pictures.deskCollider;
     }
 

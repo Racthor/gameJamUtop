@@ -9,6 +9,7 @@ public class Room : MonoBehaviour {
 	private Question[] questions;
 	private int currentQuestion = 0;
 
+    public GameObject prelude { get; private set; }
 	public GameObject intro { get; private set; }
 	public GameObject outro { get; private set; }
 	public GameObject failure { get; private set; }
@@ -30,11 +31,18 @@ public class Room : MonoBehaviour {
         examiner = GameObject.Find("Examiner").gameObject;
 
 		questions = GetComponentsInChildren<Question>(true);
+
+        prelude = transform.Find("Prelude").gameObject;
 		intro = transform.FindChild ("Intro").gameObject;
-		// Steve Jobs has no "standard" outro
-		if (ScoreManager.getSceneIndex() != 2)
+        failure = transform.FindChild("Failure").gameObject;
+
+        // disable the examiner at the begening 
+        // (he is not present during the prologue, and appear when intro start)
+        examiner.SetActive(false);
+
+        // Steve Jobs has no "standard" outro
+        if (ScoreManager.getSceneIndex() != 2)
 			outro = transform.FindChild ("Outro").gameObject;
-		failure = transform.FindChild ("Failure").gameObject;
 
 		if (ambient != null) {
 			sounds.clip = ambient;
@@ -46,8 +54,11 @@ public class Room : MonoBehaviour {
 			music.Play ();
 		}
 
-		// Set this from the editor to control when the intro starts
-		intro.SetActive (true);
+        intro.GetComponent<RoomIntro>().setExaminer(examiner);
+
+        // Set this from the editor to control when the intro starts
+        prelude.GetComponent<Prelude>().setIntro(intro);
+		prelude.SetActive (true);
 	}
 
 	public void nextQuestion() {

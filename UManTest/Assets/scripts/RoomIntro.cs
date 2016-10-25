@@ -13,18 +13,30 @@ public class RoomIntro : MonoBehaviour {
 	private Room room;
 	private Text text;
 
+    private GameObject examiner;
+
+    public void setExaminer(GameObject examiner)
+    {
+        this.examiner = examiner;
+    }
+
 	void OnEnable () {
+        Debug.Log("Start Intro !");
+
+        this.enableExaminer();
+
         setIntroTextForCurrentScene();
 		currentClip = -1;
 		room = GetComponentInParent<Room> ();
 		text = GetComponentInChildren<Text> ();
 
+        // if the two arrays lengths are not equals, Debug an exception
 		Debug.Assert (voiceClips.Length == texts.Length);
 
 		nextClip ();
 	}
 
-	void nextClip() {
+	public void nextClip() {
 		if (++currentClip < voiceClips.Length) {
 			room.voice.clip = voiceClips [currentClip];
 			room.voice.Play ();
@@ -61,5 +73,11 @@ public class RoomIntro : MonoBehaviour {
                 };
                 break;
         }
+    }
+
+    // set active the scene examiner
+    public void enableExaminer()
+    {
+        examiner.gameObject.SetActive(true);
     }
 }

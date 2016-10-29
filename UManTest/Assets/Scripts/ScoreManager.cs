@@ -14,14 +14,22 @@ public class ScoreManager : MonoBehaviour
 	private static int sceneIndex;
 	private static int nextScene;
 
+	private static ScoreManager instance;
+
 	//Awake is called when the script instance is being loaded.
 	void Awake () {
-		DontDestroyOnLoad (this.gameObject);
-
-		init ();
+		// We want to have only 1 ScoreManager at a time
+		if (!instance) {
+			instance = this;
+			DontDestroyOnLoad (this.gameObject);
+		}
+		else
+			Destroy (this.gameObject);
 	}
 
 	public void init() {
+		Debug.Log ("Initializing ScoreManager");
+
 		jaugePerLevel_Paul = new int[3] { 0, 0, 0 };
 		jaugePerLevel_Uman = new int[3] { 0, 0, 0 };
 

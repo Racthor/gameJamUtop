@@ -58,6 +58,7 @@ public class ScoreManager : MonoBehaviour
 			if(ScoreManager.jaugePaul >= 3 || ScoreManager.jaugeUman >= 3){
 				currentRoom.outro.SetActive (true);
 				nextScene = next;
+				changeScene();
 			}
 			else {
 				currentRoom.failure.SetActive (true);
@@ -94,7 +95,6 @@ public class ScoreManager : MonoBehaviour
 			}
 		}
 
-        changeScene();
 	}
 
 	public static void changeScene () {

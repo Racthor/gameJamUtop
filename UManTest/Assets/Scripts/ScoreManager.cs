@@ -67,6 +67,7 @@ public class ScoreManager : MonoBehaviour
 		}
 		// Last scene
 		else{
+			nextScene = 0;
 			int scorePaul = 0, scoreUman = 0;
 			for(int i=0; i<3; ++i){
 				scorePaul += ScoreManager.jaugePerLevel_Paul[i];
@@ -76,22 +77,22 @@ public class ScoreManager : MonoBehaviour
 				if(ScoreManager.jaugePaul >= 3 || ScoreManager.jaugeUman >= 3){
 					Debug.Log ("Fin MAJ");
 					currentRoom.transform.FindChild ("FinMAJ").gameObject.SetActive (true);
-					nextScene = next; // Credits
+					//nextScene = next; // Credits
 				}
 				else{
 					currentRoom.failure.SetActive (true);
-					nextScene = 0;
+					//nextScene = 0;
 				}
 			}
 			else if(scoreUman >= 10){
 				Debug.Log ("Fin robot");
 				currentRoom.transform.FindChild ("FinRobot").gameObject.SetActive (true);
-				nextScene = next; // Credits
+				//nextScene = next; // Credits
 			}
 			else if(scorePaul >= 10){
 				Debug.Log ("Paul de la compta ?! Mais que faites vous là ?");
 				currentRoom.transform.FindChild ("FinPaul").gameObject.SetActive (true);
-				nextScene = next; // Credits
+				//nextScene = next; // Credits
 			}
 		}
 
@@ -99,7 +100,7 @@ public class ScoreManager : MonoBehaviour
 
 	public static void changeScene () {
 		sceneIndex = nextScene - 1;
-
+		Debug.Log ("Loading scene " + nextScene);
 		SceneManager.LoadScene(nextScene, LoadSceneMode.Single);
 	}
 

@@ -116,7 +116,7 @@ public class Question : MonoBehaviour {
         
     }
 
-    // Remove the Question pictures
+    // Remove the Question pictures and buttons
     void destroyQuestionPictures()
     {
         Debug.Log("remove question pictures");
@@ -124,6 +124,10 @@ public class Question : MonoBehaviour {
         {
             questionPicture.SetActive(false);
         }
+
+		GameObject answers = transform.FindChild ("Answers").gameObject;
+		if (answers)
+			answers.SetActive (false);
     }
 
 	// Update is called once per frame

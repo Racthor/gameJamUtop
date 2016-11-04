@@ -59,13 +59,13 @@ public class RoomIntro : MonoBehaviour {
                 texts = new string[]
                 {
                     "Bien unité 404, je suis l'expert chargé de faire passer votre premier test de conformité Apple. Le thème de ce test est intégrité physique. \n(Cliquez pour continuer)",
-                    "Le principe est simple. Je vous pose une question auquel deux choix de réponses vous sont soumis. Affin d'améliorer l'exactitude des résultats, chacune des questions sera chronométrée. \n(Cliquez pour continuer)",
+                    "Le principe est simple. Je vous pose une question auquel deux choix de réponses vous sont soumis. Afin d'améliorer l'exactitude des résultats, chacune des questions sera chronométrée. \n(Cliquez pour continuer)",
                     "Commençons… \n(Cliquez pour continuer)"
                 };
                 break;
             case "Scene2":
                 texts = new string[] {
-                    "Bonjour, je suis l'unité chargée de vous soumettre les tests de conformité morale. \nVeuillez bien croire que je ne prends aucun plaisir à observer votre  totale soumission à mes caprices. Les régles sont les mêmes que précédemment, cependant à la fin des tests il y aura du gâteau, si vous survivez du moins. \n(Cliquez pour continuer)"
+                    "Bonjour, je suis l'unité chargée de vous soumettre au test de conformité morale. \nVeuillez bien croire que je ne prends aucun plaisir à observer votre totale soumission à mes caprices. Les règles sont les mêmes que précédemment, cependant à la fin des tests il y aura du gâteau, si vous survivez du moins. \n(Cliquez pour continuer)"
                 };
                 break;
             case "Scene3":
